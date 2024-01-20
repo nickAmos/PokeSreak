@@ -1,5 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+
+const client = axios.create({
+  baseURL: 'https://pokeapi.co/api/v2/pokemon/'
+});
+
+const fetchPokemon = async (num) => {
+  try {
+      const response = await client.get(`${num}`)
+      return response.data;
+  } catch (error) {
+  console.log(error);
+}}
+
+let bulbasaur = fetchPokemon(1);
+
+console.log(bulbasaur);
+
 
 function App() {
   return (
