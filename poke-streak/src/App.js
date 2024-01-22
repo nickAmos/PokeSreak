@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Mount from './Components/Mount';
+import Fetch from './Components/fetch';
 
 
 function App() {
@@ -9,12 +9,13 @@ function App() {
   
   return (
     <div className="App">
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Mount/>
+        <Fetch />
         <a
           className="App-link"
           href="https://reactjs.org"
