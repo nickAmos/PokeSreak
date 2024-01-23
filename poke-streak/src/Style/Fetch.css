@@ -1,0 +1,13 @@
+#loading-true, #loading-false {
+    width: 50px;
+    height: 50px;
+}
+
+#loading-true {
+    background-color: red;
+}
+
+#loading-false {
+    background-color: greenyellow;
+    cursor: pointer;
+}
