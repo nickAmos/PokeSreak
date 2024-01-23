@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import PokeCard from './PokeCard';
-import Question from './Question';
 import '../Style/Fetch.css';
 
 /* This component will perform the fetch and render all the seperate components that
@@ -18,6 +16,7 @@ export default function Fetch({getData, refetch, reset}) {
   const [pokeMonThree, setPokeMonThree] = useState(null);
   const [chosenMon, setChosenMon] = useState(null);
   const [fetchLoad, setFetchLoad] = useState(false);
+
 
 
 const client = axios.create({
@@ -89,15 +88,6 @@ useEffect(() => {
     getData(pokeMonOne, pokeMonTwo, pokeMonThree, chosenMon);
   }
 },[fetchLoad])
-
-const placeholder_style = {
-  display: 'flex', alignItems: 'center', justifyContent: 'center'
-}
-
-const placeholder_style_child = {
-  display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'
-}
-
 
   return(
     <>
