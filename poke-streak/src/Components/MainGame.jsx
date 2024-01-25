@@ -18,6 +18,9 @@ export default function MainGame() {
   const [highScore, setHighScore] = useState(0);
   const navigation = useNavigate();
 
+
+
+
   useEffect(() => {
     const data = window.localStorage.getItem('HIGHSCORE');
     if (data !== null) {
@@ -42,10 +45,16 @@ const handleStreak = (result) => {
       setRefetch(!refetch);
       
     } else {
+      
       if (streak > highScore) {
-        setHighScore(streak);
-        navigation('/Results')
+        console.log(`new highscore ${streak}`);
+        let newhighScore = streak;
+        setHighScore(newhighScore);
+        console.log(highScore);
       }
+      setStreak(0);
+      setRefetch(!refetch);
+      
       
       //Finish Page Logic
     }
