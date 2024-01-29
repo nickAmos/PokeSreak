@@ -1,7 +1,10 @@
 import { handleClick } from "../HelperFunctions";
+import '../Style/PokeCard.css';
+import Reveal from "./Reveal";
 
 
-export default function PokeCard({name, sprite, type, chosenMon, id, handleStreak}) { 
+
+export default function PokeCard({name, sprite, type, chosenMon, id, handleCorrect, handleIncorrect, delay}) { 
 
     let types = [type];
     let displayedTypes = [];
@@ -14,17 +17,30 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleStrea
     } 
 
     return(
-        <div onClick={() => handleClick(id, chosenMon, handleStreak)} style={{marginLeft: '50px'}}>
+        <Reveal posX={200} delay={delay}>
+            <div id="Reveal-content" onClick={() => handleClick(id, chosenMon, handleCorrect, handleIncorrect)} >
+                   
+                   <div id="name-container">
+                        <h2>{name}</h2>
+                   </div>
+
+                   <div id="image-container">
+                    <img src={sprite} alt="pokemon_sprite"/>
+                   </div>
+
+                   <div id="type-container">
+
+                   </div>
             
-            <div>{name}</div>
-            <img src={sprite} alt="pokemon_sprite"/>
-            <div>
-                <p>{displayedTypes[0]}</p>
-                {displayedTypes[1] ? <p>{displayedTypes[1]}</p> : null}
             </div>
-            
-        
-        </div>
+        </Reveal>
 
     )
 }
+
+
+/*  <div>{name}</div>
+                    <img src={sprite} alt="pokemon_sprite"/>
+                    <div>
+                <p>{displayedTypes[0]}</p>
+                {displayedTypes[1] ? <p>{displayedTypes[1]}</p> : null} */

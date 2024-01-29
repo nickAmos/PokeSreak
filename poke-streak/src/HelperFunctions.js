@@ -1,13 +1,10 @@
 
 
-export function handleClick(id, chosenMon, handleStreak) {
-    let prompt; 
+export function handleClick(id, chosenMon, handleCorrect, handleIncorrect) {
     if (id === chosenMon) {
-      prompt = 'Correct!';
-      handleStreak('correct');
+      handleCorrect(id, chosenMon);
+      
     } else {
-      prompt = 'Incorrect!';
-      handleStreak('incorrect');
+      handleIncorrect(id, chosenMon);
     }
-      console.log(`${prompt}`);
     };
