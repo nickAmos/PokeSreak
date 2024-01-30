@@ -1,14 +1,6 @@
-#clickable-container {
-    background-color: aquamarine;
-  
-}
-
-#clickable-container:hover {
-    background-color: aqua;
-}
 
 #Reveal-content {
-    background-color: antiquewhite;
+    
     height: 350px;
     width: 250px;
     border-radius: 7px;
@@ -20,7 +12,7 @@
 }
 
 #name-container {
-    background-color: hotpink;
+   
     height: 15%;
     width: 100%;
     display: flex;
@@ -34,13 +26,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+   
 }
 
 #type-container {
     height: 15%;
     width: 100%;
-    background-color: salmon;
+   
 }
 
 #image-container img {

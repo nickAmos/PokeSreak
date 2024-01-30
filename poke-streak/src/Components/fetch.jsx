@@ -37,6 +37,7 @@ const fetchPokemon = async (One, Two, Three) => {
       const responseThree = await client.get(`${Three}`);
       if (responseThree.status === 200) {
         setPokeMonThree(responseThree.data);
+        reset();
         setFetchLoad(false);
       } 
     } catch (error) {
@@ -77,10 +78,11 @@ function SetSelected() {
 
 /* On Mount the three random mons are generated (inc. the selected mon) */
 useEffect(() => {
-  reset();
+  
   SetSelected();
   gen3Num();
   fetchPokemon(num1, num2, num3);
+  
 }, [refetch]);
 
 useEffect(() => {

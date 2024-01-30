@@ -7,6 +7,7 @@ import Question from './Question';
 import Streak from './Steak';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function MainGame() {
 
   const [pokemonOne, setPokemonOne] = useState(null);
@@ -17,6 +18,7 @@ export default function MainGame() {
   const [refetch, setRefetch] = useState(false);
   const [highScore, setHighScore] = useState(0);
   const navigation = useNavigate();
+
 
 
 
@@ -44,8 +46,10 @@ export default function MainGame() {
   function handleCorrect(id, chosenMon) {
 
     setStreak(prev => prev + 1);
-    setRefetch(!refetch);
 
+    setTimeout(() => {
+      setRefetch(!refetch);
+    },200) 
   }
 
   function handleIncorrect(id, chosenMon) {
@@ -56,8 +60,8 @@ export default function MainGame() {
     }
     setStreak(0);
     setTimeout(() => {
-      navigation('/Results');
-    },1000)
+      setRefetch(!refetch);
+    },200) 
     
   }
 
@@ -110,9 +114,9 @@ const handleReset = ( ) => {
 
         {pokemonThree ? <Question chosenMon={chosenMon} pokemonOne={pokemonOne.moves} pokemonTwo={pokemonTwo.moves} pokemonThree={pokemonThree.moves} /> : null}
         <div style={placeholder_style}>
-        {(pokemonOne && pokemonTwo && pokemonThree) ? <PokeCard delay={0}  handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> : null}
-        {(pokemonTwo && pokemonOne && pokemonThree )? <PokeCard delay={0.35} handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> : null}
-        {(pokemonThree && pokemonOne && pokemonTwo )? <PokeCard delay={0.7} handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> : null}
+        {(pokemonOne && pokemonTwo && pokemonThree) ? <PokeCard  delay={0}  handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> : null}
+        {(pokemonTwo && pokemonOne && pokemonThree )? <PokeCard  delay={0.35} handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> : null}
+        {(pokemonThree && pokemonOne && pokemonTwo )? <PokeCard  delay={0.7} handleIncorrect={handleIncorrect} handleCorrect={handleCorrect} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> : null}
         </div>
 
         <div>Highscore: {highScore}</div>

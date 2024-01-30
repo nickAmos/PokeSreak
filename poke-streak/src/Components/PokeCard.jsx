@@ -1,13 +1,41 @@
 import { handleClick } from "../HelperFunctions";
 import '../Style/PokeCard.css';
 import Reveal from "./Reveal";
-
+import { useAnimate } from "framer-motion"
 
 
 export default function PokeCard({name, sprite, type, chosenMon, id, handleCorrect, handleIncorrect, delay}) { 
 
+
+    const [scope, animate] = useAnimate()
+
     let types = [type];
     let displayedTypes = [];
+
+    function handleAnimate() {
+        if (chosenMon === id) {
+            console.log('animate correct');
+            animate(scope.current,  
+                {y: -100, backgroundColor: 'Green' }, 
+                {
+                duration: 0.7,
+                type: "spring"  
+                });
+        } else {
+            console.log('animate incorrect');
+            animate(scope.current,  
+                {rotate: [0, 5, 0 ,-5, 0],
+                backgroundColor: 'Red' }, 
+                {
+                duration: 0.3,
+                
+                  
+                });
+        }
+        
+    }
+
+
 
     if (types[0].length === 1) {
         displayedTypes.push(types[0][0].type.name);
@@ -16,9 +44,12 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleCorre
         displayedTypes.push(types[0][1].type.name);
     } 
 
+    //proc animation in here 
+
     return(
         <Reveal posX={200} delay={delay}>
-            <div id="Reveal-content" onClick={() => handleClick(id, chosenMon, handleCorrect, handleIncorrect)} >
+            <div ref={scope} id="Reveal-content" onClick={() => {handleClick(id, chosenMon, handleCorrect, handleIncorrect) 
+            handleAnimate()}} >
                    
                    <div id="name-container">
                         <h2>{name}</h2>
