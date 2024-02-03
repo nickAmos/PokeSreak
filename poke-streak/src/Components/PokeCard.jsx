@@ -14,7 +14,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleCorre
 
     function handleAnimate() {
         if (chosenMon === id) {
-            console.log('animate correct');
+            
             animate(scope.current,  
                 {y: -100, backgroundColor: 'Green' }, 
                 {
@@ -22,7 +22,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleCorre
                 type: "spring"  
                 });
         } else {
-            console.log('animate incorrect');
+           
             animate(scope.current,  
                 {rotate: [0, 5, 0 ,-5, 0],
                 backgroundColor: 'Red' }, 
@@ -49,7 +49,8 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleCorre
     return(
         <Reveal posX={200} delay={delay}>
             <div ref={scope} id="Reveal-content" onClick={() => {handleClick(id, chosenMon, handleCorrect, handleIncorrect) 
-            handleAnimate()}} >
+            handleAnimate()
+            }} >
                    
                    <div id="name-container">
                         <h2>{name}</h2>

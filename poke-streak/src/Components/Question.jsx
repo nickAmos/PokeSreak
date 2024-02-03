@@ -37,12 +37,6 @@ while (true) {
         }
     };   
 }
-
-console.log(uniqueMove);
-
-
-
-
         
 
 

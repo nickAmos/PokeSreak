@@ -1,0 +1,20 @@
+
+Functional:
+    Theme change button
+        - dropdown menu that displays possible themes, on click setState to that theme.
+        - controlled through the App.js component so that it can be passed to all pages.
+    
+    Handel question appearing on refresh. 
+        - use the conditional rendering of fetched pokemonOne TWO THREE.
+
+Stylign:
+
+see Ipad*
+    
+    - Home page
+
+    - MainGame 
+
+    - Results 
+
+    - Responsiness (set h/w with this inmind.)

@@ -4,8 +4,16 @@ import { Route, Routes} from "react-router-dom";
 import Home from './Components/Home';
 import MainGame from './Components/MainGame';
 import Results from './Components/Results';
+import { useState } from 'react';
 
 function App() {
+
+  const [highscore, setHighscore] = useState(0);
+
+
+  const getHighScore = (highscore) => {
+      setHighscore(highscore);
+  }
 
   
   return (
@@ -13,8 +21,8 @@ function App() {
       <header className="App-header">
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/MainGame' element={<MainGame/>} />
-        <Route path='/Results' element={<Results/>} />
+        <Route path='/MainGame' element={<MainGame getHighScore={getHighScore}/>} />
+        <Route path='/Results' element={<Results highscore={highscore}/>} />
       </Routes>
   
       </header>
