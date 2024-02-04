@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 import { useAnimate } from "framer-motion"
 
 
-export default function PokeCard({name, sprite, type, chosenMon, id, handleCorrect, handleIncorrect, delay}) { 
+export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswer, delay}) { 
 
 
     const [scope, animate] = useAnimate()
@@ -48,8 +48,10 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleCorre
 
     return(
         <Reveal posX={200} delay={delay}>
-            <div ref={scope} id="Reveal-content" onClick={() => {handleClick(id, chosenMon, handleCorrect, handleIncorrect) 
-            handleAnimate()
+            <div ref={scope} id="Reveal-content" 
+            onClick={() => {
+                handleAnswer(chosenMon, id);
+                handleAnimate();
             }} >
                    
                    <div id="name-container">

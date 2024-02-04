@@ -8,7 +8,38 @@ import { useState } from 'react';
 
 function App() {
 
+  /*Changeable themes */
+  const defaultTheme = {backgroundColor: 'grey'}
+  const turtwigTheme = {backgroundColor: 'green'}
+  const piplupTheme = {backgroundColor: 'blue'}
+  const chimcharTheme = {backgroundColor: 'orange'}
+
   const [highscore, setHighscore] = useState(0);
+
+  const [styleHome, setStyleHome] = useState(defaultTheme);
+  const [styleMain, setStyleMain] = useState(defaultTheme);
+  const [styleResults, setStyleResults] = useState(defaultTheme);
+
+  
+const changeTheme = (theme) => {
+  if (theme === 'turtwig') {
+    setStyleHome(turtwigTheme);
+    setStyleMain(turtwigTheme);
+    setStyleResults(turtwigTheme);
+    console.log('turtwig... ran')
+  } else if (theme === 'piplup') {
+    setStyleHome(piplupTheme);
+    setStyleMain(piplupTheme);
+    setStyleResults(piplupTheme);
+    console.log('piplip... ran')
+  } else if (theme === 'chimchar') {
+    setStyleHome(chimcharTheme);
+    setStyleMain(chimcharTheme);
+    setStyleResults(chimcharTheme);
+    console.log('chimchar... ran')
+  }
+}
+
 
 
   const getHighScore = (highscore) => {
@@ -20,9 +51,9 @@ function App() {
     <div className="App"> 
       <header className="App-header">
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/MainGame' element={<MainGame getHighScore={getHighScore}/>} />
-        <Route path='/Results' element={<Results highscore={highscore}/>} />
+        <Route path='/' element={<Home styleHome={styleHome} changeTheme={changeTheme}/>} />
+        <Route path='/MainGame' element={<MainGame styleMain={styleMain} getHighScore={getHighScore}/>} />
+        <Route path='/Results' element={<Results styleResults={styleResults} highscore={highscore}/>} />
       </Routes>
   
       </header>
