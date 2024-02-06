@@ -7,14 +7,30 @@ Functional:
     Handel question appearing on refresh. 
         - use the conditional rendering of fetched pokemonOne TWO THREE.
 
-Stylign:
+    Remove results page. Render a results section in the main game based on state.
+        - have a button to nav back to home / try again (stay on main).
+        - this avoids annoying data drilling. 
 
-see Ipad*
-    
+Styling:
+
     - Home page
 
     - MainGame 
 
-    - Results 
-
     - Responsiness (set h/w with this inmind.)
+
+
+Wednesday 07/02:
+ - begin css for positioning of main game and home pages, just boxes where
+    things will go is fine. Style with responsiveness in nmind.  
+-  Delete restuls page. Set up a conditional render of results when game ends.
+    have 
+
+
+Thursday 08/02:
+ - finish all css for positioning, set up fonts. 
+ - create the styling state needed to change theme. 
+
+ Friday 09/02:
+- complete theme styling. 
+- complete general styling. 
