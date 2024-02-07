@@ -21,7 +21,10 @@ export default function Home ({changeTheme, styleHome}) {
 
             <div id='right-side'>
                 <div id='button-txt-container'>
-                    <div id='button-container'>
+                    <div id='button-container' 
+                        onClick={() => {
+                            navigation('/MainGame')}
+                    }>
                             button will fill this space
                     </div>
                     {/*only display number high score when width is low*/}

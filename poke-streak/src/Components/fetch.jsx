@@ -93,9 +93,14 @@ useEffect(() => {
 
   return(
     <>
-    {fetchLoad ? <div id='loading-true'></div> : <div onClick={() => {
-    }} id='loading-false'></div>}
+   
     </>
 
   )
 };
+
+
+/* LOADING LOGIC:
+
+ {fetchLoad ? <div id='loading-true'></div> : <div onClick={() => {
+    }} id='loading-false'></div>}*/

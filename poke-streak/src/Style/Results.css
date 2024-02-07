@@ -1,0 +1,15 @@
+#ResultsPage-Container {
+    height: 50%;
+    width: 50%;
+    background-color: oldlace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#Your-Score, #Highscore-Container, #PlayAgain-Container {
+    background-color: salmon;
+    width: 90%;
+    height: 25%;
+}
