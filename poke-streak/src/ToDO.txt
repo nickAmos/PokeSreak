@@ -11,6 +11,8 @@ Functional:
         - have a button to nav back to home / try again (stay on main).
         - this avoids annoying data drilling. 
 
+    Disable answering after choosing Mon.
+    
 Styling:
 
     - Home page

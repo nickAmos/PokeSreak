@@ -45,7 +45,7 @@ while (true) {
 
     return(
         <>
-        <div>The chosen move is {uniqueMove}</div>
+        <h2 style={{fontSize: '36px'}}>Which pokemon knows the move {uniqueMove}?</h2>
         </>
     )
 }

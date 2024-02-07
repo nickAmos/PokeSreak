@@ -1,16 +1,27 @@
-import { handleClick } from "../HelperFunctions";
+import { useEffect, useState } from "react";
 import '../Style/PokeCard.css';
 import Reveal from "./Reveal";
 import { useAnimate } from "framer-motion"
 
 
-export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswer, delay}) { 
+export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswer, delay, trigger}) { 
 
 
     const [scope, animate] = useAnimate()
+    const [clickable, setClickable] = useState(true);
 
     let types = [type];
     let displayedTypes = [];
+
+    useEffect(() => {
+        if (trigger) {
+            animate(scope.current,
+                {opacity: 0},
+                {duration: 0.5, type: "spring"})
+        }
+    },[trigger])
+
+
 
     function handleAnimate() {
         if (chosenMon === id) {

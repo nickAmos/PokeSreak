@@ -21,6 +21,9 @@ export default function MainGame({getHighScore, styleMain}) {
   const [highScore, setHighScore] = useState(0);
   const navigation = useNavigate();
   const [resultsPage, setResultsPage] = useState(false);
+  const [triggerOne, setTriggerOne] = useState(false);
+  const [triggerTwo, setTriggerTwo] = useState(false);
+  const [triggerThree, setTriggerThree] = useState(false);
 
 
   useEffect(() => {
@@ -59,15 +62,32 @@ const handleReset = ( ) => {
 const handleAnswer = (answer, selection) => {
   if (answer === selection) {
     console.log('correct');
+    if (selection === 1) {
+      setTriggerTwo(true);
+      setTriggerThree(true);
+    }
+    if (selection === 2) {
+      setTriggerOne(true);
+      setTriggerThree(true);
+    }
+    if (selection === 3) {
+      setTriggerTwo(true);
+      setTriggerOne(true);
+    }
     setStreak(prev => prev + 1);
     setTimeout(() => {
       setRefetch(!refetch);
+      setTriggerOne(false);
+      setTriggerTwo(false);
+      setTriggerThree(false);
+
     },1000);
   } else {
     console.log('incorrect');
     handleHighscore(streak);
     setTimeout(() => {
       setResultsPage(true);
+      setRefetch(!refetch);
     },1000) 
   }
 }
@@ -90,13 +110,18 @@ const handleAnswer = (answer, selection) => {
           {pokemonThree ? <Question chosenMon={chosenMon} pokemonOne={pokemonOne.moves} pokemonTwo={pokemonTwo.moves} pokemonThree={pokemonThree.moves} /> : null}
         </div>
         <div id='PokeCard-Container'>
-          {(pokemonOne && pokemonTwo && pokemonThree) ? <PokeCard handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> : null}
-          {(pokemonTwo && pokemonOne && pokemonThree )? <PokeCard handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> : null}
-          {(pokemonThree && pokemonOne && pokemonTwo )? <PokeCard handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> : null}
+          <div id='card-container'>{(pokemonOne && pokemonTwo && pokemonThree) ? <PokeCard trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> : null}</div>
+          <div id='card-container'>{(pokemonTwo && pokemonOne && pokemonThree )? <PokeCard trigger={triggerTwo} handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> : null}</div>
+          <div id='card-container'>{(pokemonThree && pokemonOne && pokemonTwo )? <PokeCard trigger={triggerThree} handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> : null}</div>
         </div>
         <div id='Score-Container'>
-          <div>Highscore: {highScore}</div>
-          <Streak streak={streak}/>
+          <div id='HighScore-Main'>
+            <h3>Highscore: {highScore}</h3>
+          </div>
+          <div id='streak-container'>
+           <Streak streak={streak}/>
+          </div>
+            
         </div>
       </div>
 
@@ -106,10 +131,9 @@ const handleAnswer = (answer, selection) => {
           <div id='Highscore-Container'></div>
           <div id='PlayAgain-Container'>
             <button onClick={() => {
-              setRefetch(!refetch);
               setTimeout(() => {
                 setResultsPage(false);
-              },3000)
+              },2500)
             }}>Try Again</button>
           </div>
       </div>

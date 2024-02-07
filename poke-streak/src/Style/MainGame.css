@@ -1,3 +1,22 @@
+h2 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+h3 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+
 #Main-Results-Container {
     height: 100vh;
     width: 100vw;
@@ -22,7 +41,7 @@
 
 #Question-Container, #Score-Container {
     height: 100px;
-    background-color: salmon;
+    
 }
 
 #PokeCard-Container {
@@ -30,5 +49,55 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: plum;
+    
+}
+
+#Question-Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Score-Container {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+#HighScore-Main, #streak-container {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: center;
+    border-bottom: black solid 2px;
+}
+
+#card-container {
+    height: 350px;
+    width: 240px;
+}
+@media only screen and (max-width: 1300px) { 
+    #PokeCard-Container, #Question-Container {
+        width: 100%;
+    }
+    
+}
+@media only screen and (max-width: 1000px) { 
+    #MainGame-Container {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 750px) { 
+    #card-container {
+        width: 200px;
+        height: 300px;
+    }
+}
+
+@media only screen and (max-height: 650px) { 
+    #MainGame-Container {
+        height: 100%;
+    }
 }

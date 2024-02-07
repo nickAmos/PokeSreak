@@ -2,7 +2,7 @@ export default function Streak({streak}) {
 
     return (
         <>
-        <div>{streak}</div>
+        <h3>Currect streak: {streak}</h3>
         </>
     )
 }

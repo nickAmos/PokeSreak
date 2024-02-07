@@ -21,6 +21,7 @@ export default function Reveal({ children, posX, posY, delay}) {
     return (
       <div ref={ref} id="clickable-container">
         <motion.div
+        style={{height: '100%', widows: '100%'}}
           initial= {{opacity:0, y: posY, x: posX}}
           animate= {mainControl}
           transition={{

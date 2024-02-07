@@ -1,8 +1,11 @@
 
-#Reveal-content {
-    
-    height: 350px;
-    width: 250px;
+#clickable-container {
+    height: 100%;
+    width: 100%;
+}
+#Reveal-content {  
+    height: 100%;
+    width: 100%;
     border-radius: 7px;
     border:  solid black 2.2px;
     display: flex;
