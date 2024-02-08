@@ -2,7 +2,7 @@ import {useNavigate} from 'react-router-dom';
 import '../Style/Home.css';
 import { motion } from "framer-motion";
 import { starters } from '../Starters';
-import { useState } from 'react';
+
 
 export default function Home ({changeTheme, styleHome}) {
 
@@ -30,7 +30,7 @@ export default function Home ({changeTheme, styleHome}) {
                             navigation('/MainGame')}
                     }>
                         <button style={{backgroundColor: styleHome['secondaryColor']['backgroundColor'], border: styleHome['primaryColor']['border']}} id='newgame-button'>
-                            <h3>New Game</h3>
+                            <h3 style={{color: styleHome['tertiaryColor']['backgroundColor']}}>New Game</h3>
                             </button>
                     </div>
                     {/*only display number high score when width is low*/}

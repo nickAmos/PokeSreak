@@ -1,15 +1,11 @@
 
 Functional:
-    Theme change button
-        - dropdown menu that displays possible themes, on click setState to that theme.
-        - controlled through the App.js component so that it can be passed to all pages.
-    
+   
     Handel question appearing on refresh. 
         - use the conditional rendering of fetched pokemonOne TWO THREE.
 
-    Remove results page. Render a results section in the main game based on state.
-        - have a button to nav back to home / try again (stay on main).
-        - this avoids annoying data drilling. 
+    fix streak // highscore
+
 
     Disable answering after choosing Mon.
     

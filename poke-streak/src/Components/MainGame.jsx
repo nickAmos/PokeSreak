@@ -105,17 +105,17 @@ const handleAnswer = (answer, selection) => {
   }
   
   return (
-    <div id='Main-Results-Container' style={styleMain}>
+    <div id='Main-Results-Container' style={{backgroundColor: styleMain['primaryColor']['backgroundColor']}}>
       <Fetch reset={handleReset} refetch={refetch} getData={getData}/>
       {!resultsPage ? 
-      <div id='MainGame-Container'>
-        <div id='Question-Container'>
+      <div id='MainGame-Container' style={{backgroundColor: styleMain['tertiaryColor']['backgroundColor']}}>
+        <div style={{color: styleMain['secondaryColor']['backgroundColor']}} id='Question-Container'>
           {pokemonThree ? <Question chosenMon={chosenMon} pokemonOne={pokemonOne.moves} pokemonTwo={pokemonTwo.moves} pokemonThree={pokemonThree.moves} /> : null}
         </div>
-        <div id='PokeCard-Container'>
-          <div id='card-container'>{(pokemonOne && pokemonTwo && pokemonThree) ? <PokeCard trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> : null}</div>
-          <div id='card-container'>{(pokemonTwo && pokemonOne && pokemonThree )? <PokeCard trigger={triggerTwo} handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> : null}</div>
-          <div id='card-container'>{(pokemonThree && pokemonOne && pokemonTwo )? <PokeCard trigger={triggerThree} handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> : null}</div>
+        <div id='PokeCard-Container' style={{color: styleMain['secondaryColor']['backgroundColor']}}>
+          {(pokemonOne && pokemonTwo && pokemonThree) ? <div  id='card-container' > <PokeCard styleMain={styleMain} trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> </div> : null}
+          {(pokemonTwo && pokemonOne && pokemonThree )? <div  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerTwo} handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> </div>: null}
+          {(pokemonThree && pokemonOne && pokemonTwo )? <div  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerThree} handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> </div> : null}
         </div>
         <div id='Score-Container'>
           <div id='HighScore-Main'>
@@ -135,6 +135,8 @@ const handleAnswer = (answer, selection) => {
           <div id='PlayAgain-Container'>
             <button onClick={() => {
               setTimeout(() => {
+                setStreak(0);
+                navigation('/');
                 setResultsPage(false);
               },2500)
             }}>Try Again</button>

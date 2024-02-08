@@ -10,13 +10,22 @@ function App() {
 
   /*Changeable themes */
   const defaultTheme = {
-    'primaryColor':{backgroundColor: '#3b444b', border: ' 2px solid orange #3b444b'},
+    'primaryColor':{backgroundColor: '#3b444b', border: ' 2px solid #3b444b'},
     'secondaryColor': {backgroundColor: 'white'},
     'tertiaryColor': {backgroundColor: 'aliceblue'}
   }
-  const turtwigTheme = {backgroundColor: 'green'}
-  const piplupTheme = {backgroundColor: 'blue'}
-  const chimcharTheme = {backgroundColor: 'orange'}
+  const turtwigTheme = {
+    'primaryColor':{backgroundColor: '#05472A', border: ' 2px solid #4B5320'},
+    'secondaryColor': {backgroundColor: '#808000'},
+    'tertiaryColor': {backgroundColor: '#BCB88A'}
+  }
+  const piplupTheme = {'primaryColor':{backgroundColor: '#191970', border: ' 2px solid #191970'},
+  'secondaryColor': {backgroundColor: '#475877'},
+  'tertiaryColor': {backgroundColor: '#B6D0E2'}}
+
+  const chimcharTheme = {'primaryColor':{backgroundColor: '#CC5500', border: ' 2px solid #CC5500'},
+  'secondaryColor': {backgroundColor: '#4d3b34',border: ' 2px solid #4d3b34'},
+  'tertiaryColor': {backgroundColor: '#FFAE42'}}
 
   const [highscore, setHighscore] = useState(0);
 

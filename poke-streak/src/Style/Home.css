@@ -1,5 +1,8 @@
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 
@@ -56,6 +59,7 @@
     height: 150px;
     background-color: white;
     border-radius: 7.5px;
+  
     display: flex;
     align-items: center;
     justify-content: center;
