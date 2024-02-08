@@ -9,7 +9,11 @@ import { useState } from 'react';
 function App() {
 
   /*Changeable themes */
-  const defaultTheme = {backgroundColor: 'grey'}
+  const defaultTheme = {
+    'primaryColor':{backgroundColor: '#3b444b', border: ' 2px solid orange #3b444b'},
+    'secondaryColor': {backgroundColor: 'white'},
+    'tertiaryColor': {backgroundColor: 'aliceblue'}
+  }
   const turtwigTheme = {backgroundColor: 'green'}
   const piplupTheme = {backgroundColor: 'blue'}
   const chimcharTheme = {backgroundColor: 'orange'}
@@ -19,6 +23,11 @@ function App() {
   const [styleHome, setStyleHome] = useState(defaultTheme);
   const [styleMain, setStyleMain] = useState(defaultTheme);
   const [styleResults, setStyleResults] = useState(defaultTheme);
+
+
+const sendHighScore = (highscore) => {
+  setHighscore(highscore);
+} 
 
   
 const changeTheme = (theme) => {
@@ -40,19 +49,13 @@ const changeTheme = (theme) => {
   }
 }
 
-
-
-  const getHighScore = (highscore) => {
-      setHighscore(highscore);
-  }
-
-  
+ 
   return (
     <div className="App"> 
       <header className="App-header">
       <Routes>
-        <Route path='/' element={<Home styleHome={styleHome} changeTheme={changeTheme}/>} />
-        <Route path='/MainGame' element={<MainGame styleMain={styleMain} getHighScore={getHighScore}/>} />
+        <Route path='/' element={<Home highscore={highscore} styleHome={styleHome} changeTheme={changeTheme}/>} />
+        <Route path='/MainGame' element={<MainGame styleMain={styleMain} sendHighScore={sendHighScore}/>} />
         <Route path='/Results' element={<Results styleResults={styleResults} highscore={highscore}/>} />
       </Routes>
   

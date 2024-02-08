@@ -15,9 +15,9 @@ Functional:
     
 Styling:
 
-    - Home page
+    - Collect color palate
 
-    - MainGame 
+- MainGame 
 
     - Responsiness (set h/w with this inmind.)
 
@@ -31,8 +31,43 @@ Wednesday 07/02:
 
 Thursday 08/02:
  - finish all css for positioning, set up fonts. 
- - create the styling state needed to change theme. 
+ - Start styling logic for themes 
 
  Friday 09/02:
 - complete theme styling. 
-- complete general styling. 
+
+
+
+
+
+
+Color Palate: 
+
+turtwig:
+
+    Dark : #05472A
+    Sage: #BCB88A
+    Lighter Brown: #808000
+    darker brown: #4B5320
+
+
+chimchar: 
+    dark: #CC5500
+    chedder: #FFAE42
+    lighter: #FFE5B4
+    dark ash: #786259
+
+
+piplip :
+    Dark: #191970
+    light pastal: #B6D0E2
+    carcol: #475877
+    yellow: #FCF55F
+
+
+
+
+
+
+
+

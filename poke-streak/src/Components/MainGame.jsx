@@ -10,7 +10,7 @@ import '../Style/MainGame.css';
 import '../Style/Results.css';
 
 
-export default function MainGame({getHighScore, styleMain}) {
+export default function MainGame({sendHighScore, styleMain}) {
 
   const [pokemonOne, setPokemonOne] = useState(null);
   const [pokemonTwo, setPokemonTwo] = useState(null);
@@ -19,17 +19,20 @@ export default function MainGame({getHighScore, styleMain}) {
   const [streak, setStreak] = useState(0);
   const [refetch, setRefetch] = useState(false);
   const [highScore, setHighScore] = useState(0);
-  const navigation = useNavigate();
   const [resultsPage, setResultsPage] = useState(false);
   const [triggerOne, setTriggerOne] = useState(false);
   const [triggerTwo, setTriggerTwo] = useState(false);
   const [triggerThree, setTriggerThree] = useState(false);
+  const navigation = useNavigate();
+
+
 
 
   useEffect(() => {
     const data = window.localStorage.getItem('HIGHSCORE');
     if (data !== null) {
     setHighScore(JSON.parse(data))
+    sendHighScore(highScore);
     }
   }, [])
   

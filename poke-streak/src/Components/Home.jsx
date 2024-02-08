@@ -1,35 +1,41 @@
 import {useNavigate} from 'react-router-dom';
 import '../Style/Home.css';
+import { motion } from "framer-motion";
+import { starters } from '../Starters';
+import { useState } from 'react';
+
 export default function Home ({changeTheme, styleHome}) {
 
     const navigation = useNavigate()
 
     return(
-        <div style={styleHome} id='Home-mainsection'>
+        <div style={styleHome['primaryColor']} id='Home-mainsection'>
             <div id='left-side'>
                 <div id='theme-name-container'>
                     <div id='change-theme-txt'>
-                        <p>Change theme below</p>
+                        <h2>Change theme below</h2>
                     </div>
                     <div id='poketheme-container'>
-                        <div id='theme-child' onClick={() => changeTheme('turtwig')}>turtwig</div>
-                        <div id='theme-child' onClick={() => changeTheme('piplup')}>piplup</div>
-                        <div id='theme-child' onClick={() => changeTheme('chimchar')}>chimchar</div>
+                        <motion.div whileHover={{scale: 1.1,transition: { type: "spring",stiffness: 260,damping: 20 },}}whileTap={{ scale: 0.9 }} id='theme-child' onClick={() => changeTheme('turtwig')}><img alt={'pokemon'} src={starters[0]['url']}/></motion.div>
+                        <motion.div whileHover={{scale: 1.1,transition: { type: "spring",stiffness: 260,damping: 20 },}}whileTap={{ scale: 0.9 }} id='theme-child' onClick={() => changeTheme('chimchar')}><img alt={'pokemon'} src={starters[1]['url']}/></motion.div>
+                        <motion.div whileHover={{scale: 1.1,transition: { type: "spring",stiffness: 260,damping: 20 },}}whileTap={{ scale: 0.9 }} id='theme-child' onClick={() => changeTheme('piplup')}><img alt={'pokemon'} src={starters[2]['url']}/></motion.div>
                     </div>
                 </div>
             </div>
 
-            <div id='right-side'>
+            <div style={{backgroundColor: styleHome['tertiaryColor']['backgroundColor']}} id='right-side'>
                 <div id='button-txt-container'>
                     <div id='button-container' 
                         onClick={() => {
                             navigation('/MainGame')}
                     }>
-                            button will fill this space
+                        <button style={{backgroundColor: styleHome['secondaryColor']['backgroundColor'], border: styleHome['primaryColor']['border']}} id='newgame-button'>
+                            <h3>New Game</h3>
+                            </button>
                     </div>
                     {/*only display number high score when width is low*/}
-                    <div id='HighScore-text-container'>
-                            high score here
+                    <div id='Contact-text-container'>
+                            <p>Contact Developer</p>
                     </div>
                 </div>
          

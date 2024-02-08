@@ -26,12 +26,10 @@
 
 #right-side {
     width: 45%;
-    background-color: aliceblue;
 }
 
 #theme-name-container {
-    background-color: oldlace;
-    height: 30%;
+    height: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,15 +38,24 @@
 }
 
 #change-theme-txt {
+    color: white;
     width: 500px;
     height: 75px;
-    background-color: hotpink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#change-theme-txt h2 {
+    font-size: 32px;
 }
 
 #poketheme-container {
     width: 500px;
-    height: 100px;
+    height: 150px;
     background-color: white;
+    border-radius: 7.5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +64,15 @@
 #theme-child {
     height: 100%;
     width: 33%;
-    border: black solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-child img {
+    height: 100%;
+    aspect-ratio: auto;
+
 }
 
 @media only screen and (max-width: 900px) {
@@ -77,8 +92,7 @@
 
 #button-txt-container {
     width: 500px;
-    height: 300px;
-    background-color: oldlace;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,13 +102,27 @@
 #button-container {
     width: 65%;
     height: 100px;
-    border: 1px solid black;
-    border-radius: 7.5px;
 }
 
-#HighScore-text-container {
+#Contact-text-container {
     width: 45%;
-    height: 50px;
+    height: 30px;
     border: 1px solid black;
     border-radius: 7.5px;
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+}
+
+
+#newgame-button {
+    height: 100%;
+    width: 100%;
+    border-radius: 7.5px;
+    border: solid 2px black;
+}
+
+#newgame-button h3 {
+    font-size: 28px;
+    color: #3b444b
 }
