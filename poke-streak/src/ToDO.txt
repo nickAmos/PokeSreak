@@ -1,13 +1,14 @@
 
 Functional:
    
-    Handel question appearing on refresh. 
-        - use the conditional rendering of fetched pokemonOne TWO THREE.
+   Incorrect/Correct animate to fire after each answer.
+    - include emojis,
+    - use the FETCH loading state to ensure timing is correct, ie. next question
+    spawns when the fetch is complete. Mght have to prop drill this. 
 
     fix streak // highscore
-
-
-    Disable answering after choosing Mon.
+`
+    Disable answering after choosing Mon.`
     
 Styling:
 

@@ -120,7 +120,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
     useEffect(() => {
         if (trigger) {
             animate(scope.current,
-                {opacity: 0},
+                {opacity: 1, scale: 0},
                 {duration: 0.5, type: "spring"})
         }
     },[trigger])
@@ -131,7 +131,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
         if (chosenMon === id) {
             
             animate(scope.current,  
-                {y: -100, backgroundColor: 'Green' }, 
+                {y: -50, backgroundColor: '#8AFF8A' }, 
                 {
                 duration: 0.7,
                 type: "spring"  
@@ -139,12 +139,11 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
         } else {
            
             animate(scope.current,  
-                {rotate: [0, 5, 0 ,-5, 0],
-                backgroundColor: 'Red' }, 
+                {rotate: [0, 3, 0 ,-3, 0],
+                backgroundColor: '#FF6961' }, 
                 {
-                duration: 0.3,
+                duration: 0.2,
                 
-                  
                 });
         }
         
@@ -162,7 +161,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
     //proc animation in here 
 
     return(
-        <Reveal style={{backgroundColor: styleMain['primaryColor']['backgroundColor']}} posX={200} delay={delay}>
+        <Reveal style={{backgroundColor: styleMain['primaryColor']['backgroundColor']}} posY={200} delay={delay}>
             <div  ref={scope} id="Reveal-content" 
             onClick={() => {
                 handleAnswer(chosenMon, id);

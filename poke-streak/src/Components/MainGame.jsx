@@ -8,6 +8,7 @@ import Streak from './Steak';
 import { useNavigate } from 'react-router-dom';
 import '../Style/MainGame.css';
 import '../Style/Results.css';
+import { useAnimate } from "framer-motion"
 
 
 export default function MainGame({sendHighScore, styleMain}) {
@@ -23,10 +24,28 @@ export default function MainGame({sendHighScore, styleMain}) {
   const [triggerOne, setTriggerOne] = useState(false);
   const [triggerTwo, setTriggerTwo] = useState(false);
   const [triggerThree, setTriggerThree] = useState(false);
+
   const navigation = useNavigate();
 
+  const [scope, animate] = useAnimate();
 
 
+function handleQuestionAnimate() {
+  animate(scope.current, 
+    {opacity:0},
+    {
+      duration: 0.5,
+      type: "spring"  
+      })
+    setTimeout(() => {
+      animate(scope.current,
+      {opacity:1},
+    {
+      duration: 0.5,
+      type: "spring"  
+      })
+    },2000)
+}
 
   useEffect(() => {
     const data = window.localStorage.getItem('HIGHSCORE');
@@ -63,6 +82,7 @@ const handleReset = ( ) => {
 }
 
 const handleAnswer = (answer, selection) => {
+  handleQuestionAnimate();
   if (answer === selection) {
     console.log('correct');
     if (selection === 1) {
@@ -78,8 +98,8 @@ const handleAnswer = (answer, selection) => {
       setTriggerOne(true);
     }
     setStreak(prev => prev + 1);
+    setRefetch(!refetch);
     setTimeout(() => {
-      setRefetch(!refetch);
       setTriggerOne(false);
       setTriggerTwo(false);
       setTriggerThree(false);
@@ -88,17 +108,24 @@ const handleAnswer = (answer, selection) => {
   } else {
     console.log('incorrect');
     handleHighscore(streak);
+    if (selection === 1) {
+      setTriggerTwo(true);
+      setTriggerThree(true);
+    }
+    if (selection === 2) {
+      setTriggerOne(true);
+      setTriggerThree(true);
+    }
+    if (selection === 3) {
+      setTriggerTwo(true);
+      setTriggerOne(true);
+    }
     setTimeout(() => {
       setResultsPage(true);
       setRefetch(!refetch);
-    },1000) 
+    },2000);
   }
 }
-  
-
-  const placeholder_style = {
-    display: 'flex', alignItems: 'center', justifyContent: 'center'
-  }
   
   const placeholder_style_child = {
     display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'
@@ -110,7 +137,11 @@ const handleAnswer = (answer, selection) => {
       {!resultsPage ? 
       <div id='MainGame-Container' style={{backgroundColor: styleMain['tertiaryColor']['backgroundColor']}}>
         <div style={{color: styleMain['secondaryColor']['backgroundColor']}} id='Question-Container'>
+          <div ref={scope}  id='questionComponentContainer'>
           {pokemonThree ? <Question chosenMon={chosenMon} pokemonOne={pokemonOne.moves} pokemonTwo={pokemonTwo.moves} pokemonThree={pokemonThree.moves} /> : null}
+          {/* CORRECT! // INCORRECT! component to be animated in while Question is opacity 0, just reverse animations
+          to give time for the next question to load.  */}
+          </div>
         </div>
         <div id='PokeCard-Container' style={{color: styleMain['secondaryColor']['backgroundColor']}}>
           {(pokemonOne && pokemonTwo && pokemonThree) ? <div  id='card-container' > <PokeCard styleMain={styleMain} trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> </div> : null}

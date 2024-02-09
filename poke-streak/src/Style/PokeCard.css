@@ -6,7 +6,7 @@
 #Reveal-content {  
     height: 100%;
     width: 100%;
-    border-radius: 7px;
+    border-radius: 7.5px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -34,10 +34,13 @@
 
 #type-container {
     height: 15%;
+    background-color: white;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    border-bottom-left-radius: 7.5px;
+    border-bottom-right-radius: 7.5px;
    
 }
 #type-container img {

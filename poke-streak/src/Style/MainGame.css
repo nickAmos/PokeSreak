@@ -28,7 +28,7 @@ p {
 #MainGame-Container {
     height: 80%;
     width: 80%;
-    background-color: oldlace;
+    border-radius: 7.5px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -37,6 +37,17 @@ p {
 
 #Question-Container, #PokeCard-Container, #Score-Container {
     width: 80%;
+}
+
+#questionHolder {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#questionHolder h1 {
+    padding-top: 30px;
 }
 
 #Question-Container, #Score-Container {

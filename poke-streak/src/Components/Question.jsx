@@ -1,4 +1,4 @@
-
+import '../Style/MainGame.css';
 
 export default function Question({pokemonOne, pokemonTwo, pokemonThree, chosenMon}) {
 
@@ -44,8 +44,9 @@ while (true) {
 
 
     return(
-        <>
-        <h2 style={{fontSize: '36px'}}>Which pokemon knows the move {uniqueMove}?</h2>
-        </>
+        <div id='questionHolder'>
+            <h2 style={{fontSize: '36px'}}>Which pokemon knows the move</h2>
+            {(pokemonOne && pokemonTwo && pokemonThree) ? <h1>{uniqueMove}</h1>: null}
+        </div>
     )
 }
