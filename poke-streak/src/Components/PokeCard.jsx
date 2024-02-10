@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../Style/PokeCard.css';
 import Reveal from "./Reveal";
+
 import { useAnimate } from "framer-motion"
 
 
@@ -9,6 +10,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
 
     const [scope, animate] = useAnimate()
     const [clickable, setClickable] = useState(true);
+
 
     let types = [type];
     let displayedTypes = [];
@@ -122,7 +124,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
             animate(scope.current,
                 {opacity: 1, scale: 0},
                 {duration: 0.5, type: "spring"})
-        }
+        } 
     },[trigger])
 
 

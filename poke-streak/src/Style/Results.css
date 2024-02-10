@@ -1,15 +1,26 @@
 #ResultsPage-Container {
     height: 50%;
     width: 50%;
-    background-color: oldlace;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 7.5px;
     justify-content: space-evenly;
 }
 
-#Your-Score, #Highscore-Container, #PlayAgain-Container {
-    background-color: salmon;
+#Your-Score, #PlayAgain-Container, #mons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     width: 90%;
     height: 25%;
+}
+
+#Your-Score h3 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    color: white;
 }

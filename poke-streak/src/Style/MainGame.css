@@ -89,6 +89,23 @@ p {
     height: 350px;
     width: 240px;
 }
+
+#PlayAgain-Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#newgame-button-Main {
+    border-radius: 5px;
+    width: 200px;
+    height: 45px;
+    color: white;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
 @media only screen and (max-width: 1300px) { 
     #PokeCard-Container, #Question-Container {
         width: 100%;

@@ -4,11 +4,11 @@ import '../Style/App.css';
 import Fetch from './fetch';
 import PokeCard from './PokeCard';
 import Question from './Question';
-import Streak from './Steak';
 import { useNavigate } from 'react-router-dom';
 import '../Style/MainGame.css';
 import '../Style/Results.css';
 import { useAnimate } from "framer-motion"
+import { starters } from '../Starters';
 
 
 export default function MainGame({sendHighScore, styleMain}) {
@@ -24,10 +24,29 @@ export default function MainGame({sendHighScore, styleMain}) {
   const [triggerOne, setTriggerOne] = useState(false);
   const [triggerTwo, setTriggerTwo] = useState(false);
   const [triggerThree, setTriggerThree] = useState(false);
+  const [newHighScore, setNewHighScore] = useState(false);
 
   const navigation = useNavigate();
 
   const [scope, animate] = useAnimate();
+
+  let num1;
+  let num2;
+  let num3;
+
+  if (styleMain === 'turtwig') {
+      num1 = 1;
+      num2 = 4;
+      num3 = 7;
+  } else if (styleMain === 'chimchar') {
+      num1 = 2;
+      num2 = 6;
+      num3 = 8;
+  } else {
+      num1 = 3;
+      num2 = 6;
+      num3 = 9;
+  }
 
 
 function handleQuestionAnimate() {
@@ -72,6 +91,7 @@ function handleQuestionAnimate() {
 const handleHighscore = (score) => {
     if (score > highScore) {
       console.log('handle highscore ran');
+      setNewHighScore(true);
       setHighScore(streak);
   }
 }
@@ -103,7 +123,6 @@ const handleAnswer = (answer, selection) => {
       setTriggerOne(false);
       setTriggerTwo(false);
       setTriggerThree(false);
-
     },1000);
   } else {
     console.log('incorrect');
@@ -153,24 +172,41 @@ const handleAnswer = (answer, selection) => {
             <h3>Highscore: {highScore}</h3>
           </div>
           <div id='streak-container'>
-           <Streak streak={streak}/>
+           {streak}
           </div>
             
         </div>
       </div>
 
       :
-      <div id='ResultsPage-Container'>
-          <div id='Your-Score'><Streak streak={streak}/></div>
-          <div id='Highscore-Container'></div>
+      <div id='ResultsPage-Container' style={{backgroundColor: styleMain['tertiaryColor']['backgroundColor']}}>
+        {!newHighScore ? 
+          <div id='Your-Score'>
+            <h3>You scored: {streak}</h3>
+            <h3>Highscore: {highScore}</h3>
+          </div>
+          :
+          <div id='Your-Score'>
+          <h3>New highscore is {streak}!</h3>
+        </div>
+           }
+
+          <div id='mons-container'>
+            <div><img alt='pokemon' src={starters[1]['url']}/></div>
+            <div><img alt='pokemon' src={starters[2]['url']}/></div>
+            <div><img alt='pokemon' src={starters[3]['url']}/></div>
+          </div>
+         
           <div id='PlayAgain-Container'>
-            <button onClick={() => {
+          <button style={{backgroundColor: styleMain['secondaryColor']['backgroundColor'], border: styleMain['primaryColor']['border']}} id='newgame-button-Main'  
+           onClick={() => {
               setTimeout(() => {
                 setStreak(0);
                 navigation('/');
                 setResultsPage(false);
+                setNewHighScore(false);
               },2500)
-            }}>Try Again</button>
+            }}>Return home</button>
           </div>
       </div>
       }
@@ -178,3 +214,18 @@ const handleAnswer = (answer, selection) => {
   );
 }
 
+
+/* new feat 
+ <button style={{backgroundColor: styleMain['secondaryColor']['backgroundColor'], border: styleMain['primaryColor']['border']}} id='newgame-button-Main'  
+              onClick={() => {
+                setTimeout(() => {
+                  setStreak(0);
+                  setNewHighScore(false);
+                  navigation('/');
+                },2500)}}>
+                  <h3 style={{color: styleMain['tertiaryColor']['backgroundColor']}}>New Game</h3>
+            </button>
+
+            <button style={{backgroundColor: styleMain['secondaryColor']['backgroundColor'], border: styleMain['primaryColor']['border']}} id='newgame-button-Main'>
+            <h3 style={{color: styleMain['tertiaryColor']['backgroundColor']}}>Return Home</h3>
+            </button> */

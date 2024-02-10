@@ -5,37 +5,14 @@ Functional:
     - include emojis,
     - use the FETCH loading state to ensure timing is correct, ie. next question
     spawns when the fetch is complete. Mght have to prop drill this. 
-
-    fix streak // highscore
 `
-    Disable answering after choosing Mon.`
+    Figure out how to send correct numbers to src generation in results. 
+
     
 Styling:
 
-    - Collect color palate
-
-- MainGame 
-
-    - Responsiness (set h/w with this inmind.)
-
-
-Wednesday 07/02:
- - begin css for positioning of main game and home pages, just boxes where
-    things will go is fine. Style with responsiveness in nmind.  
--  Delete restuls page. Set up a conditional render of results when game ends.
-    have 
-
-
-Thursday 08/02:
- - finish all css for positioning, set up fonts. 
- - Start styling logic for themes 
-
- Friday 09/02:
-- complete theme styling. 
-
-
-
-
+    - New palate for chimchar
+    - put all evolutions on results page middle section. src generated through theme stying object
 
 
 Color Palate: 
