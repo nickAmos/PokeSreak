@@ -41,6 +41,7 @@ function App() {
 
   const [styleHome, setStyleHome] = useState(defaultTheme);
   const [styleMain, setStyleMain] = useState(defaultTheme);
+  const [starter, setStarter] = useState(null);
 
 
 
@@ -51,17 +52,20 @@ const sendHighScore = (highscore) => {
   
 const changeTheme = (theme) => {
   if (theme === 'turtwig') {
+    setStarter('turtwig');
     setStyleHome(turtwigTheme);
     setStyleMain(turtwigTheme);
 
     console.log('turtwig... ran')
   } else if (theme === 'piplup') {
     setStyleHome(piplupTheme);
+    setStarter('piplup');
     setStyleMain(piplupTheme);
 
     console.log('piplip... ran')
   } else if (theme === 'chimchar') {
     setStyleHome(chimcharTheme);
+    setStarter('chimchar');
     setStyleMain(chimcharTheme);
 
     console.log('chimchar... ran')
@@ -74,8 +78,7 @@ const changeTheme = (theme) => {
       <header className="App-header">
       <Routes>
         <Route path='/' element={<Home highscore={highscore} styleHome={styleHome} changeTheme={changeTheme}/>} />
-        <Route path='/MainGame' element={<MainGame styleMain={styleMain} sendHighScore={sendHighScore}/>} />
-        <Route path='/Results' element={<Results highscore={highscore}/>} />
+        <Route path='/MainGame' element={<MainGame starter={starter} styleMain={styleMain} sendHighScore={sendHighScore}/>} />
       </Routes>
   
       </header>

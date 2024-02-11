@@ -11,7 +11,7 @@ import { useAnimate } from "framer-motion"
 import { starters } from '../Starters';
 
 
-export default function MainGame({sendHighScore, styleMain}) {
+export default function MainGame({sendHighScore, styleMain, starter}) {
 
   const [pokemonOne, setPokemonOne] = useState(null);
   const [pokemonTwo, setPokemonTwo] = useState(null);
@@ -30,23 +30,33 @@ export default function MainGame({sendHighScore, styleMain}) {
 
   const [scope, animate] = useAnimate();
 
-  let num1;
-  let num2;
-  let num3;
+  let evo1;
+  let evo2;
+  let evo3;
 
-  if (styleMain === 'turtwig') {
-      num1 = 1;
-      num2 = 4;
-      num3 = 7;
-  } else if (styleMain === 'chimchar') {
-      num1 = 2;
-      num2 = 6;
-      num3 = 8;
-  } else {
-      num1 = 3;
-      num2 = 6;
-      num3 = 9;
-  }
+if (starter === 'turtwig') {
+  console.log('i ran');
+  evo1 = <img alt='pokemon' src={starters[0]['url']}/>
+  evo2 = <img alt='pokemon' src={starters[3]['url']}/>
+  evo3 = <img alt='pokemon' src={starters[6]['url']}/>
+}
+
+if (starter === 'chimchar') {
+  console.log('i ran');
+  evo1 = <img alt='pokemon' src={starters[1]['url']}/>
+  evo2 = <img alt='pokemon' src={starters[4]['url']}/>
+  evo3 = <img alt='pokemon' src={starters[7]['url']}/>
+}
+
+if (starter === 'piplup') {
+  console.log('i ran');
+  evo1 = <img alt='pokemon' src={starters[2]['url']}/>
+  evo2 = <img alt='pokemon' src={starters[5]['url']}/>
+  evo3 = <img alt='pokemon' src={starters[8]['url']}/>
+}
+ 
+ 
+ 
 
 
 function handleQuestionAnimate() {
@@ -192,9 +202,9 @@ const handleAnswer = (answer, selection) => {
            }
 
           <div id='mons-container'>
-            <div><img alt='pokemon' src={starters[1]['url']}/></div>
-            <div><img alt='pokemon' src={starters[2]['url']}/></div>
-            <div><img alt='pokemon' src={starters[3]['url']}/></div>
+            <div>{evo1}</div>
+            <div>{evo2}</div>
+            <div>{evo3}</div>
           </div>
          
           <div id='PlayAgain-Container'>
