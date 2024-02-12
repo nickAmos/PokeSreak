@@ -11,7 +11,7 @@ import { useAnimate } from "framer-motion"
 import { starters } from '../Starters';
 
 
-export default function MainGame({sendHighScore, styleMain, starter}) {
+export default function MainGame({styleMain, starter}) {
 
   const [pokemonOne, setPokemonOne] = useState(null);
   const [pokemonTwo, setPokemonTwo] = useState(null);
@@ -25,10 +25,17 @@ export default function MainGame({sendHighScore, styleMain, starter}) {
   const [triggerTwo, setTriggerTwo] = useState(false);
   const [triggerThree, setTriggerThree] = useState(false);
   const [newHighScore, setNewHighScore] = useState(false);
+  const [loadQuestion, setLoadQuestion] = useState(false);
+
+  const [styleMainState, setStyleMainState] = useState(styleMain);
 
   const navigation = useNavigate();
 
-  const [scope, animate] = useAnimate();
+
+  const handleQuestionLoad = () => {
+    setLoadQuestion(!loadQuestion);
+  }
+    
 
   let evo1;
   let evo2;
@@ -70,7 +77,7 @@ if (starter === 'piplup') {
  
  
 
-
+/*
 function handleQuestionAnimate() {
   animate(scope.current, 
     {opacity:0},
@@ -86,13 +93,12 @@ function handleQuestionAnimate() {
       type: "spring"  
       })
     },2000)
-}
+} */
 
   useEffect(() => {
     const data = window.localStorage.getItem('HIGHSCORE');
     if (data !== null) {
     setHighScore(JSON.parse(data))
-    sendHighScore(highScore);
     }
   }, [])
   
@@ -124,7 +130,7 @@ const handleReset = ( ) => {
 }
 
 const handleAnswer = (answer, selection) => {
-  handleQuestionAnimate();
+  //handleQuestionAnimate();
   if (answer === selection) {
     console.log('correct');
     if (selection === 1) {
@@ -174,27 +180,32 @@ const handleAnswer = (answer, selection) => {
   
   return (
     <div id='Main-Results-Container' style={{backgroundColor: styleMain['primaryColor']['backgroundColor']}}>
-      <Fetch reset={handleReset} refetch={refetch} getData={getData}/>
+      <Fetch handleQuestionLoad={handleQuestionLoad}  reset={handleReset} refetch={refetch} getData={getData}/>
       {!resultsPage ? 
       <div id='MainGame-Container' style={{backgroundColor: styleMain['tertiaryColor']['backgroundColor']}}>
+        <div id='questionComponentContainer'>
+        {loadQuestion ? 
         <div style={{color: styleMain['secondaryColor']['backgroundColor']}} id='Question-Container'>
-          <div ref={scope}  id='questionComponentContainer'>
+          
           {pokemonThree ? <Question chosenMon={chosenMon} pokemonOne={pokemonOne.moves} pokemonTwo={pokemonTwo.moves} pokemonThree={pokemonThree.moves} /> : null}
           {/* CORRECT! // INCORRECT! component to be animated in while Question is opacity 0, just reverse animations
           to give time for the next question to load.  */}
-          </div>
+          
+        </div>
+        : 
+        <div id='poke-ball-container'><img id='spinningBall' alt='pokeball' src={require('../Images/pokeBall.png')} /></div>}
         </div>
         <div id='PokeCard-Container' style={{color: styleMain['secondaryColor']['backgroundColor']}}>
-          {(pokemonOne && pokemonTwo && pokemonThree) ? <div  id='card-container' > <PokeCard styleMain={styleMain} trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> </div> : null}
-          {(pokemonTwo && pokemonOne && pokemonThree )? <div  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerTwo} handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> </div>: null}
-          {(pokemonThree && pokemonOne && pokemonTwo )? <div  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerThree} handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> </div> : null}
+          {(pokemonOne && pokemonTwo && pokemonThree) ? <div onClick={() => handleQuestionLoad()}  id='card-container' > <PokeCard styleMain={styleMain} trigger={triggerOne} handleAnswer={handleAnswer}  delay={0}  chosenMon={chosenMon} id={1} style={placeholder_style_child} movepool={pokemonOne.moves} name={pokemonOne.name} sprite={pokemonOne.sprites.front_default} type={pokemonOne.types} /> </div> : null}
+          {(pokemonTwo && pokemonOne && pokemonThree )? <div onClick={() => handleQuestionLoad()}  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerTwo} handleAnswer={handleAnswer} delay={0.35} chosenMon={chosenMon} id={2} style={placeholder_style_child} movepool={pokemonTwo.moves} name={pokemonTwo.name} sprite={pokemonTwo.sprites.front_default} type={pokemonTwo.types} /> </div>: null}
+          {(pokemonThree && pokemonOne && pokemonTwo )? <div onClick={() => handleQuestionLoad()}  id='card-container'> <PokeCard styleMain={styleMain} trigger={triggerThree} handleAnswer={handleAnswer} delay={0.7} chosenMon={chosenMon} id={3} style={placeholder_style_child} movepool={pokemonThree.moves} name={pokemonThree.name} sprite={pokemonThree.sprites.front_default} type={pokemonThree.types} /> </div> : null}
         </div>
         <div id='Score-Container'>
           <div id='HighScore-Main'>
             <h3>Highscore: {highScore}</h3>
           </div>
           <div id='streak-container'>
-           {streak}
+            <h3>Current Streak: {streak}</h3>
           </div>
             
         </div>

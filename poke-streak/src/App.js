@@ -3,18 +3,12 @@ import './Style/App.css';
 import { Route, Routes} from "react-router-dom";
 import Home from './Components/Home';
 import MainGame from './Components/MainGame';
-import Results from './Components/Results';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { starters } from './Starters';
 
 function App() {
 
-  /*Changeable themes */
-  const defaultTheme = {
-    'primaryColor':{backgroundColor: '#3b444b', border: ' 2px solid #3b444b'},
-    'secondaryColor': {backgroundColor: 'white'},
-    'tertiaryColor': {backgroundColor: 'aliceblue'}
-  }
   const turtwigTheme = {
     'primaryColor':{backgroundColor: '#05472A', border: ' 2px solid #4B5320'},
     'secondaryColor': {backgroundColor: '#808000'},
@@ -39,15 +33,29 @@ function App() {
 
   const [highscore, setHighscore] = useState(0);
 
-  const [styleHome, setStyleHome] = useState(defaultTheme);
-  const [styleMain, setStyleMain] = useState(defaultTheme);
+
+  const [styleHome, setStyleHome] = useState(turtwigTheme);
+  const [styleMain, setStyleMain] = useState(turtwigTheme);
   const [starter, setStarter] = useState(null);
 
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('STYLEHOME');
+    if (data !== null) {
+    setStyleHome(JSON.parse(data))
+   
+    }
+  }, [])
+  
+    useEffect(() => {
+        window.localStorage.setItem('STYLEHOME', JSON.stringify(styleHome));
+    }, [styleHome]);
 
 
 const sendHighScore = (highscore) => {
   setHighscore(highscore);
 } 
+
 
   
 const changeTheme = (theme) => {

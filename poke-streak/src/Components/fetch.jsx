@@ -8,7 +8,7 @@ to individual components without drilling too far. The chosenMon state will be u
 to generate both the answer and question components (trigger through an onClick
   even in the PokeCards. */
 
-export default function Fetch({getData, refetch, reset}) {
+export default function Fetch({getData, refetch, reset, handleQuestionLoad}) {
 
 /* All the State for the fetched mons and correct answer */
   const [pokeMonOne, setPokeMonOne] = useState(null);
@@ -38,6 +38,7 @@ const fetchPokemon = async (One, Two, Three) => {
       if (responseThree.status === 200) {
         setPokeMonThree(responseThree.data);
         reset();
+        handleQuestionLoad();
         setFetchLoad(false);
       } 
     } catch (error) {

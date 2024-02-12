@@ -1,18 +1,13 @@
 
 Functional:
    
-   Incorrect/Correct animate to fire after each answer.
-    - include emojis,
-    - use the FETCH loading state to ensure timing is correct, ie. next question
-    spawns when the fetch is complete. Mght have to prop drill this. 
-`
-    Figure out how to send correct numbers to src generation in results. 
-
+   - Modal contact dev
     
 Styling:
 
     - New palate for chimchar
-    - put all evolutions on results page middle section. src generated through theme stying object
+
+    - general touch ups. 
 
 
 Color Palate: 
