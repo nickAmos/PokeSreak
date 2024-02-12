@@ -34,6 +34,18 @@ export default function MainGame({sendHighScore, styleMain, starter}) {
   let evo2;
   let evo3;
 
+  let evo1Comment = null;
+  let evo2Comment = null;
+  let evo3Comment = null;
+
+if (streak < 3) {
+  evo1Comment = <p>You can do better!</p>
+} else if (streak > 2 && streak < 5) {
+  evo2Comment = <p>Impressive!</p>
+} else if (streak > 4) {
+  evo3Comment = <p>That was epic</p>
+}
+
 if (starter === 'turtwig') {
   console.log('i ran');
   evo1 = <img alt='pokemon' src={starters[0]['url']}/>
@@ -190,6 +202,20 @@ const handleAnswer = (answer, selection) => {
 
       :
       <div id='ResultsPage-Container' style={{backgroundColor: styleMain['tertiaryColor']['backgroundColor']}}>
+        <div id='mons-container'>
+            <div id='evo1'>
+              {evo1}
+              {evo1Comment ? <div id='evo1Comment'>{evo1Comment}</div> : null}
+              </div>
+            <div id='evo2'>
+              {evo2}
+              {evo2Comment ? <div id='evo2Comment'>{evo2Comment}</div> : null}
+              </div>
+            <div id='evo3'>
+              {evo3}
+              {evo3Comment ? <div id='evo3Comment'>{evo3Comment}</div> : null}
+              </div>
+          </div>
         {!newHighScore ? 
           <div id='Your-Score'>
             <h3>You scored: {streak}</h3>
@@ -201,21 +227,17 @@ const handleAnswer = (answer, selection) => {
         </div>
            }
 
-          <div id='mons-container'>
-            <div>{evo1}</div>
-            <div>{evo2}</div>
-            <div>{evo3}</div>
-          </div>
+          
          
           <div id='PlayAgain-Container'>
           <button style={{backgroundColor: styleMain['secondaryColor']['backgroundColor'], border: styleMain['primaryColor']['border']}} id='newgame-button-Main'  
            onClick={() => {
-              setTimeout(() => {
+           
                 setStreak(0);
                 navigation('/');
                 setResultsPage(false);
                 setNewHighScore(false);
-              },2500)
+             
             }}>Return home</button>
           </div>
       </div>

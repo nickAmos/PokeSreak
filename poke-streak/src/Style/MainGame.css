@@ -106,6 +106,21 @@ p {
     font-style: normal;
 }
 
+#evo1, #evo2, #evo3 {
+    position: relative;
+    
+}
+#evo1Comment, #evo2Comment, #evo3Comment {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    padding: 4px;
+    border: black solid 1.5px;
+    top: -10px;
+    left: -80px;
+}
+
+
 @media only screen and (max-width: 1300px) { 
     #PokeCard-Container, #Question-Container {
         width: 100%;

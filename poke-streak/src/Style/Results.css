@@ -24,3 +24,8 @@
     font-size: 32px;
     color: white;
 }
+
+#Your-Score {
+    background-color: rgba(255, 255, 255, 0.214);
+    border-radius: 7.5px;
+}
