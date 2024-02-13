@@ -53,10 +53,13 @@ p {
 
 #questionHolder {
     padding-top: 50px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+
 
 #poke-ball-container {
     width: 50px;
@@ -81,9 +84,7 @@ p {
     }
   }
 
-#questionHolder h1 {
-    padding-top: 30px;
-}
+
 
 #Question-Container, #Score-Container {
     height: 100px;
@@ -120,6 +121,9 @@ p {
     font-size: 20px;
     justify-content: center;
    
+}
+#questionHolder h2 {
+    font-size: 32px;
 }
 
 #card-container {
@@ -174,10 +178,21 @@ p {
         width: 200px;
         height: 300px;
     }
+    #questionHolder h2, #questionHolder h1 {
+        font-size: 24px;
+    }
 }
 
-@media only screen and (max-height: 650px) { 
+@media only screen and (max-height: 750px) { 
     #MainGame-Container {
         height: 100%;
+    }
+    #questionHolder {
+        padding: 0;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #questionHolder h2 {
+        padding-right: 15px;
     }
 }

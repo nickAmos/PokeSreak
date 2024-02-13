@@ -2,11 +2,13 @@ import {useNavigate} from 'react-router-dom';
 import '../Style/Home.css';
 import { motion } from "framer-motion";
 import { starters } from '../Starters';
+import '../Style/Modal.css'
 
 
 export default function Home ({changeTheme, styleHome}) {
 
-    const navigation = useNavigate()
+    const navigation = useNavigate();
+   
 
     return(
         <div style={styleHome['primaryColor']} id='Home-mainsection'>
@@ -34,9 +36,6 @@ export default function Home ({changeTheme, styleHome}) {
                             </button>
                     </div>
                     {/*only display number high score when width is low*/}
-                    <div id='Contact-text-container'>
-                            <p>Contact Developer</p>
-                    </div>
                 </div>
          
             </div>
@@ -45,8 +44,3 @@ export default function Home ({changeTheme, styleHome}) {
 }
 
 
-
-/*   OLD BUTTON
- <button onClick={() => {
-                navigation('/MainGame')
-            }}>Go to game</button> */
