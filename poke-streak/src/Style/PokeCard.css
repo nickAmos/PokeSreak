@@ -5,6 +5,7 @@
 }
 #Reveal-content {  
     height: 100%;
+    cursor: pointer;
     width: 100%;
     border-radius: 7.5px;
     background-color: white;

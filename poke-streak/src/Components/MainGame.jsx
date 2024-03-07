@@ -7,7 +7,7 @@ import Question from './Question';
 import { useNavigate } from 'react-router-dom';
 import '../Style/MainGame.css';
 import '../Style/Results.css';
-import { useAnimate } from "framer-motion"
+
 import { starters } from '../Starters';
 
 
@@ -52,7 +52,7 @@ if (streak < 3) {
 } else if (streak > 4) {
   evo3Comment = <p>That was epic</p>
 }
-
+ 
 if (starter === 'turtwig') {
   console.log('i ran');
   evo1 = <img alt='pokemon' src={starters[0]['url']}/>

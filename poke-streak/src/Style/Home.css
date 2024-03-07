@@ -70,6 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 #theme-child img {
@@ -104,6 +105,7 @@
 
 #button-container {
     width: 65%;
+    cursor: pointer;
     height: 100px;
 }
 

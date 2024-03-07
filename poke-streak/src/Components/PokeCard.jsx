@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../Style/PokeCard.css';
 import Reveal from "./Reveal";
+import { motion } from "framer-motion";
 
 import { useAnimate } from "framer-motion"
 
@@ -164,7 +165,8 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
 
     return(
         <Reveal style={{backgroundColor: styleMain['primaryColor']['backgroundColor']}} posY={200} delay={delay}>
-            <div  ref={scope} id="Reveal-content" 
+            <motion.div whileHover={{scale: 1.1,transition: { type: "spring",stiffness: 260,damping: 20 },}}
+              ref={scope} id="Reveal-content" 
             onClick={() => {
                 handleAnswer(chosenMon, id);
                 handleAnimate();
@@ -183,7 +185,7 @@ export default function PokeCard({name, sprite, type, chosenMon, id, handleAnswe
                         {typeTwo ? typeTwo : null}
                    </div>
             
-            </div>
+            </motion.div>
         </Reveal>
 
     )
